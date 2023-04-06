@@ -12,31 +12,35 @@ An example ChatGPT plugin based on the [documented example](https://platform.ope
 Run the plugin:
 
 ```sh
-$ python3 app.py
+python3 app.py
 ```
 
 Create a TODO for a user:
 
 ```sh
-$ curl -X POST http://localhost:5002/todos/<my_test_username> -H 'Content-Type: application/json' -d '{"todo": "vacum"}'
+curl -X POST http://localhost:5002/todos/<my_test_username> \
+-H 'Content-Type: application/json' -d '{"todo": "vacum"}'
 ```
 
 Get the TODOs for the user:
 
 ```sh
-$ curl http://localhost:5002/todos/<my_test_username>
-["vacum"]
+curl http://localhost:5002/todos/<my_test_username>
 ```
+
+`["vacum"]` should be returned.
 
 Delete the TODO:
 
 ```sh
-$ curl -X DELETE http://localhost:5002/todos/<my_test_username> -H 'Content-Type: application/json' -d '{"todo_idx": 0}'
+curl -X DELETE http://localhost:5002/todos/<my_test_username> \
+-H 'Content-Type: application/json' -d '{"todo_idx": 0}'
 ```
 
 Verify the TODO has been deleted:
 
 ```sh
-$ curl http://localhost:5002/todos/<my_test_username>
-[]
+curl http://localhost:5002/todos/<my_test_username>
 ```
+
+`[]` should be returned.
